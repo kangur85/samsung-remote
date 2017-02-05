@@ -68,25 +68,29 @@ public class RequestBuilder {
 	}
 	
 	public String getCommandString(Command command) {
-		String commandBase64 = Base64.encodeToString(command.getCommand().getBytes(), lineSep);
-		
-		String message = 
-				Character.toString((char) 0x00) + 
-				Character.toString((char) 0x00) + 
-				Character.toString((char) 0x00) + 
-				Character.toString((char) commandBase64.length()) +
-				Character.toString((char) 0x00) + 
-				commandBase64;
-		
-		String part = 
-				Character.toString((char) 0x00) + 
-				Character.toString((char) APP_STRING.length()) + 
-				Character.toString((char) 0x00) + 
-				APP_STRING +
-				Character.toString((char) message.length()) +
-				Character.toString((char) 0x00) + 
-				message;
-				
+		return getCommandString(command.getCommand());
+	}
+
+	public String getCommandString(String command) {
+		String commandBase64 = Base64.encodeToString(command.getBytes(), lineSep);
+
+		String message =
+				Character.toString((char) 0x00) +
+						Character.toString((char) 0x00) +
+						Character.toString((char) 0x00) +
+						Character.toString((char) commandBase64.length()) +
+						Character.toString((char) 0x00) +
+						commandBase64;
+
+		String part =
+				Character.toString((char) 0x00) +
+						Character.toString((char) APP_STRING.length()) +
+						Character.toString((char) 0x00) +
+						APP_STRING +
+						Character.toString((char) message.length()) +
+						Character.toString((char) 0x00) +
+						message;
+
 		return part;
 	}
 	
@@ -111,5 +115,7 @@ public class RequestBuilder {
 				
 		return part;
 	}
+
+
 	// @formatter:on
 }

@@ -1,0 +1,16 @@
+apply plugin: 'java'
+version = '1.0'
+
+ext {
+    mainClassName = "TVClient"
+}
+
+jar {
+    manifest {
+        attributes "Main-Class": "$mainClassName"
+    }
+
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}

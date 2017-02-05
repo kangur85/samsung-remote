@@ -73,6 +73,10 @@ public class Client {
 		send(requestBuilder.getCommandString(command));
 	}
 
+	public void sendCommand(String command) {
+		send(requestBuilder.getCommandString(command));
+	}
+
 	public void sendText(String text) {
 		send(requestBuilder.getTextString(text));
 	}

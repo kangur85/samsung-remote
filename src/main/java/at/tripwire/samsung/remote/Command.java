@@ -24,7 +24,7 @@ public enum Command {
 
 	private String command;
 
-	private Command(String command) {
+	Command(String command) {
 		this.command = command;
 	}
 
